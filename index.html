@@ -1,65 +1,428 @@
-<!doctype html>
+<<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Human Powered Submarine Club | UConn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UConn Human Powered Submarine Club (HPSC)</title>
+  <meta name="description" content="We design, build, and race human powered submarines for the International Submarine Races (ISR)." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#0b1220;color:#e7ecff}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
-    .nav{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-    .brand{font-weight:800}
-    .links{display:flex;gap:14px;flex-wrap:wrap;color:#b6c2ff;font-weight:600}
-    .hero{margin-top:26px;padding:22px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04)}
-    h1{margin:0 0 8px;font-size:40px}
-    p{margin:10px 0;color:#b6c2ff;line-height:1.5}
-    .btns{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);font-weight:700}
-    .btn.primary{background:#5aa7ff;color:#061224;border-color:transparent}
-    @media(max-width:800px){h1{font-size:32px}}
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --border: rgba(255,255,255,0.12);
+      --accent: #f6c343; /* warm gold */
+      --accent2:#2bb3ff; /* uconn-ish blue */
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(43,179,255,0.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(246,195,67,0.12), transparent 55%),
+                  var(--bg);
+      line-height: 1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(var(--max), calc(100% - 48px)); margin-inline:auto; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(11,18,32,0.75);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:0.3px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(43,179,255,0.9), rgba(246,195,67,0.9));
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      display:grid; place-items:center;
+      color:#0b1220; font-weight:900;
+    }
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      font-weight:600; color: var(--muted);
+    }
+    .nav-links a{ padding:10px 10px; border-radius:12px; }
+    .nav-links a:hover{ background: rgba(255,255,255,0.06); color: var(--text); }
+    .nav-cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight:700;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.06); }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      border-color: transparent;
+      color: #0b1220;
+    }
+
+    /* HERO */
+    .hero{
+      position: relative;
+      padding: 48px 0 22px;
+    }
+    .hero-card{
+      position: relative;
+      overflow:hidden;
+      border-radius: calc(var(--radius) + 10px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: #0b1220;
+      min-height: 520px;
+      display:flex;
+      align-items:flex-end;
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(11,18,32,0.90) 0%, rgba(11,18,32,0.55) 50%, rgba(11,18,32,0.90) 100%),
+        url("assets/hero.jpg") center/cover no-repeat;
+      transform: scale(1.03);
+    }
+    .hero-content{
+      position: relative;
+      padding: 56px;
+      width:min(720px, 100%);
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-weight:600;
+      margin-bottom: 14px;
+    }
+    h1{
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.6px;
+    }
+    .lead{
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 18px);
+    }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .subnote{
+      margin-top: 16px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+    }
+
+    /* SECTIONS */
+    section{ padding: 54px 0; }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px;
+      margin-bottom: 18px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(24px, 2.4vw, 32px);
+      letter-spacing: -0.4px;
+    }
+    .section-title p{ margin:0; color: var(--muted); max-width: 60ch; }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    }
+    .card img{
+      width:100%; height: 180px; object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .card .pad{ padding: 16px; }
+    .card h3{ margin: 0 0 8px; font-size: 18px; }
+    .card p{ margin:0; color: var(--muted); font-size: 14.5px; }
+
+    /* Sponsors strip */
+    .sponsor-row{
+      display:flex; flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .pill{
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-weight:700;
+      font-size: 13px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    .panel{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      padding: 18px;
+    }
+    .panel h3{ margin:0 0 8px; }
+    .panel p{ margin:0; color: var(--muted); }
+
+    footer{
+      padding: 28px 0 40px;
+      color: rgba(255,255,255,0.55);
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.10);
+    }
+
+    /* Responsive */
+    @media (max-width: 940px){
+      .grid3{ grid-template-columns: 1fr; }
+      .hero-content{ padding: 26px; }
+      .contact{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; } /* simple mobile nav for now */
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">HPSC | UConn</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#sub">Submarine</a>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <div class="logo">H</div>
+        <div>HPSC <span style="color:rgba(255,255,255,0.55); font-weight:700;">| UConn</span></div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#what">What we do</a>
+        <a href="#sub">Our Submarine</a>
         <a href="#sponsors">Sponsors</a>
-        <a href="#join">Join</a>
+        <a href="#join">Get Involved</a>
         <a href="#contact">Contact</a>
       </div>
-    </div>
 
-    <div class="hero">
-      <h1>Human Powered Submarine Club</h1>
-      <p id="about">We design, build, and race a human powered submarine for the International Submarine Races (ISR).</p>
-      <div class="btns">
-        <a class="btn primary" href="#join">Join the team</a>
+      <div class="nav-cta">
         <a class="btn" href="#sponsors">Sponsor us</a>
+        <a class="btn primary" href="#join">Join the team</a>
       </div>
     </div>
-
-    <div class="hero" id="sub">
-      <h2>Our Submarine</h2>
-      <p>Add your design overview, timeline, and photos here.</p>
-    </div>
-
-    <div class="hero" id="sponsors">
-      <h2>Sponsors</h2>
-      <p>Put sponsor logos and tier info here.</p>
-    </div>
-
-    <div class="hero" id="join">
-      <h2>Join</h2>
-      <p>Put your interest form link + meeting time here.</p>
-    </div>
-
-    <div class="hero" id="contact">
-      <h2>Contact</h2>
-      <p>Email: your-email-here</p>
-    </div>
   </div>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-bg" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <div class="kicker">University of Connecticut • Human Powered Submarine Club</div>
+          <h1>A fully-flooded submarine powered by a single diver.</h1>
+          <p class="lead">
+            We design, build, and race human powered submarines for the International Submarine Races (ISR).
+            Join the build, help us test, and get hands-on engineering experience.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#join">Join Now</a>
+            <a class="btn" href="#sponsors">Donate / Sponsor</a>
+          </div>
+
+          <div class="subnote">
+            Tip: Replace <b>assets/hero.jpg</b> with your best underwater/test photo for an instant upgrade.
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT WE DO -->
+  <section id="what">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>What we do</h2>
+          <p>Real engineering experience: design, fabrication, testing, and racing.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <img src="assets/card1.jpg" alt="Engineering work" />
+          <div class="pad">
+            <h3>Real Engineering</h3>
+            <p>CAD, CFD, controls, and structural design—plus documentation and design reviews like a real program.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/card2.jpg" alt="Fabrication work" />
+          <div class="pad">
+            <h3>Fabrication</h3>
+            <p>Composites, machining, 3D printing, assembly, and test iteration. Build it, break it, improve it.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/card3.jpg" alt="Testing and diving support" />
+          <div class="pad">
+            <h3>Testing & Diving</h3>
+            <p>Pool testing, safety systems, procedures, and diver support—turning a design into a race-ready vehicle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMARINE -->
+  <section id="sub">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Our submarine</h2>
+          <p>Add a short design overview, timeline milestones, and a few renders/photos. Keep it simple and visual.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Current build status</h3>
+        <p>
+          Replace this with: hull concept, propulsion approach, steering, safety features, and your current milestones
+          (CAD complete, prototypes tested, next: composite layup, etc.).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section id="sponsors">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Sponsors</h2>
+          <p>Sponsorship keeps us building. Add your tier list + logo strip here.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Thank you to our supporters</h3>
+        <p>Replace these placeholders with sponsor logos (PNG/SVG) or names linked to their websites.</p>
+
+        <div class="sponsor-row">
+          <div class="pill">Scuba Shack</div>
+          <div class="pill">Rock West Composites</div>
+          <div class="pill">UConn Robotics</div>
+          <div class="pill">Your next sponsor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Get involved</h2>
+          <p>Make this dead simple: link your interest form + meeting time + Discord/GroupMe.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Join the team</h3>
+        <p>
+          • Interest form: <a href="#" style="text-decoration:underline;">(add link)</a><br/>
+          • Meetings: (day/time/location)<br/>
+          • Contact: (club email)
+        </p>
+        <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn primary" href="#">Interest Form</a>
+          <a class="btn" href="#contact">Email us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Contact</h2>
+          <p>Put your real email here (and optionally socials).</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="panel">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:UHPSc@outlook.com" style="text-decoration:underline;">UHPSc@outlook.com</a><br/>
+            (Change to your preferred club email)
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Social</h3>
+          <p>
+            Instagram: <a href="#" style="text-decoration:underline;">@uconnhpsc</a><br/>
+            LinkedIn: <a href="#" style="text-decoration:underline;">(add link)</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> UConn Human Powered Submarine Club (HPSC). Built on GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

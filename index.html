@@ -23,6 +23,7 @@
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+    html, body{ width:100%; overflow-x:hidden; } /* IMPORTANT: prevent sideways scroll */
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -38,24 +39,27 @@
       position:sticky;
       top:0;
       z-index:50;
-      background: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.92);
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--border);
     }
     .header-inner{
       max-width:var(--max);
       margin:0 auto;
-      padding:12px 18px;
+      padding:10px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:12px;
+      position:relative; /* for dropdown nav on mobile */
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
-      min-width: 220px;
+      min-width:0;          /* IMPORTANT: prevents overflow on mobile */
+      flex: 1 1 auto;
     }
     .brand img{
       width:34px; height:34px;
@@ -63,35 +67,53 @@
       object-fit:contain;
       border:1px solid var(--border);
       background:#fff;
+      flex: 0 0 auto;
     }
     .brand .title{
       display:flex;
       flex-direction:column;
       line-height:1.1;
+      min-width:0;
     }
-    .brand .title b{ font-size:14px; letter-spacing:.2px; }
-    .brand .title span{ font-size:12px; color:var(--muted); }
+    .brand .title b{
+      font-size:14px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand .title span{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 
-    nav{
+    /* Desktop nav */
+    .nav{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
       flex-wrap:wrap;
       justify-content:center;
     }
-    nav a{
+    .nav a{
       font-size:13px;
       color:#1f2937;
       padding:8px 10px;
       border-radius:12px;
     }
-    nav a:hover{ background:var(--uconn-light); }
+    .nav a:hover{ background:var(--uconn-light); }
 
-    .header-cta{
+    .nav-cta{
       display:flex;
       align-items:center;
       gap:10px;
+      margin-left: 6px;
     }
+
+    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -99,7 +121,7 @@
       gap:8px;
       padding:10px 12px;
       border-radius:999px;
-      font-weight:600;
+      font-weight:700;
       font-size:13px;
       border:1px solid var(--border);
       background:#fff;
@@ -120,6 +142,20 @@
       color:var(--uconn-navy);
     }
 
+    /* Mobile hamburger */
+    .menu-btn{
+      display:none;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:18px;
+      line-height:1;
+      box-shadow:0 6px 18px rgba(17,24,39,.06);
+      cursor:pointer;
+      flex: 0 0 auto;
+    }
+
     /* ===== Hero (full-bleed) ===== */
     .hero{
       position:relative;
@@ -130,10 +166,8 @@
       justify-content:center;
       overflow:hidden;
       border-bottom: 1px solid var(--border);
-      background:
-        url("assets/hero.jpg.jpg") center 35% / cover no-repeat;
+      background: url("assets/hero.jpg.jpg") center 35% / cover no-repeat;
     }
-
     /* lighter overlay so it’s NOT dim */
     .hero::before{
       content:"";
@@ -146,22 +180,18 @@
 
     .hero-inner{
       position:relative;
-      width:min(var(--max), calc(100% - 36px));
+      width:min(var(--max), calc(100% - 28px));
       margin:0 auto;
-      padding: 28px 0 38px;
+      padding: 24px 0 34px;
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:18px;
       align-items:end;
     }
-    @media (max-width: 900px){
-      .hero{ min-height: 72vh; }
-      .hero-inner{ grid-template-columns: 1fr; padding: 24px 0 28px; }
-    }
 
     .hero-card{
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(229,231,235,.9);
+      background: rgba(255,255,255,.94);
+      border:1px solid rgba(229,231,235,.92);
       box-shadow: var(--shadow);
       border-radius: 22px;
       padding: 22px 22px 18px;
@@ -182,9 +212,6 @@
       line-height:1.05;
       letter-spacing:-.02em;
       color: var(--uconn-navy);
-    }
-    @media (max-width: 520px){
-      .hero h1{ font-size: 34px; }
     }
     .hero p{
       margin:0 0 16px;
@@ -222,7 +249,7 @@
     }
 
     /* ===== Sections ===== */
-    section{ padding: 70px 18px; }
+    section{ padding: 64px 14px; }
     .wrap{ max-width:var(--max); margin:0 auto; }
 
     .section-title{
@@ -238,7 +265,6 @@
       letter-spacing:-.02em;
       color: var(--uconn-navy);
     }
-
     .divider{
       height:4px;
       width:64px;
@@ -247,15 +273,12 @@
       margin: 10px 0 0;
     }
 
-    /* ===== What we do cards ===== */
+    /* ===== Cards ===== */
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:18px;
       margin-top: 18px;
-    }
-    @media (max-width: 900px){
-      .grid-3{ grid-template-columns: 1fr; }
     }
     .card{
       background: var(--card);
@@ -263,6 +286,7 @@
       border-radius: var(--radius);
       box-shadow: 0 12px 26px rgba(17,24,39,.06);
       overflow:hidden;
+      min-width:0;
     }
     .card-media{
       height: 190px;
@@ -271,7 +295,7 @@
     .card-media img{
       width:100%; height:100%;
       object-fit:cover;
-      object-position: center;
+      object-position:center;
     }
     .card-body{ padding:16px 16px 18px; }
     .card-body h3{ margin:0 0 8px; font-size:18px; color:var(--uconn-navy); }
@@ -282,7 +306,7 @@
       background: var(--uconn-light);
       border-top:1px solid var(--border);
       border-bottom:1px solid var(--border);
-      padding: 22px 18px;
+      padding: 18px 14px;
     }
     .stats-inner{
       max-width:var(--max);
@@ -292,15 +316,13 @@
       gap:14px;
       text-align:center;
     }
-    @media (max-width: 900px){
-      .stats-inner{ grid-template-columns: repeat(2, 1fr); }
-    }
     .stat{
       background:#fff;
       border:1px solid var(--border);
       border-radius: 16px;
       padding:14px 12px;
       box-shadow:0 10px 20px rgba(17,24,39,.05);
+      min-width:0;
     }
     .stat .num{
       font-size:26px;
@@ -312,18 +334,19 @@
       font-size:12px;
       color: var(--muted);
       margin-top:4px;
-      font-weight:600;
+      font-weight:700;
       text-transform:uppercase;
       letter-spacing:.08em;
     }
 
-    /* ===== Sponsors ===== */
+    /* ===== Panel / Sponsors ===== */
     .panel{
       background:#fff;
       border:1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: 0 12px 26px rgba(17,24,39,.06);
       padding:18px;
+      min-width:0;
     }
     .pills{
       display:flex;
@@ -338,7 +361,7 @@
       padding:10px 12px;
       font-size:13px;
       color:#1f2937;
-      font-weight:600;
+      font-weight:700;
     }
 
     /* ===== Contact ===== */
@@ -349,15 +372,13 @@
       margin-top: 18px;
       align-items:start;
     }
-    @media (max-width: 900px){
-      .contact-grid{ grid-template-columns: 1fr; }
-    }
     .map{
       border:1px solid var(--border);
       border-radius: var(--radius);
       overflow:hidden;
       box-shadow: 0 12px 26px rgba(17,24,39,.06);
       background:#fff;
+      min-width:0;
     }
     .map iframe{
       width:100%;
@@ -371,6 +392,7 @@
       border-radius: var(--radius);
       box-shadow: 0 12px 26px rgba(17,24,39,.06);
       padding:18px;
+      min-width:0;
     }
     .contact-box h3{ margin:0 0 10px; color:var(--uconn-navy); }
     .contact-item{
@@ -382,15 +404,22 @@
       border-radius: 14px;
       margin-bottom:10px;
       background: var(--uconn-light);
+      min-width:0;
     }
     .contact-item b{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#1f2937; }
-    .contact-item a{ color: var(--uconn-blue); font-weight:700; font-size:14px; }
-    .contact-item span{ color:#374151; font-size:14px; font-weight:700; }
+    .contact-item a{
+      color: var(--uconn-blue);
+      font-weight:800;
+      font-size:14px;
+      overflow-wrap:anywhere; /* IMPORTANT: prevents horizontal scrolling on long URLs */
+      word-break: break-word;
+    }
+    .contact-item span{ color:#374151; font-size:14px; font-weight:800; }
 
     /* ===== Footer ===== */
     footer{
       border-top:1px solid var(--border);
-      padding: 26px 18px;
+      padding: 22px 14px;
       color: var(--muted);
       font-size: 13px;
       background:#fff;
@@ -404,11 +433,63 @@
       gap:10px;
       flex-wrap:wrap;
     }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .grid-3{ grid-template-columns: 1fr; }
+      .stats-inner{ grid-template-columns: repeat(2, 1fr); }
+      .contact-grid{ grid-template-columns: 1fr; }
+      .hero-inner{ grid-template-columns: 1fr; }
+      .hero{ min-height: 70vh; }
+    }
+
+    /* Mobile nav dropdown */
+    @media (max-width: 720px){
+      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
+
+      .nav{
+        display:none;
+        position:absolute;
+        left:12px;
+        right:12px;
+        top:58px;
+        background: rgba(255,255,255,.98);
+        border:1px solid var(--border);
+        border-radius:16px;
+        box-shadow:0 18px 40px rgba(17,24,39,.12);
+        padding:12px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:8px;
+        z-index:100;
+      }
+      .nav a{
+        width:100%;
+        padding:10px 12px;
+        border-radius:12px;
+      }
+      .nav-cta{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin-left:0;
+        margin-top:6px;
+      }
+      .nav-cta .btn{ width:100%; }
+
+      .nav.open{ display:flex; }
+
+      /* Hero takes less screen on phones */
+      .hero{ min-height: 62vh; }
+      .hero-card{ padding:18px; }
+      .hero h1{ font-size: 34px; }
+      section{ padding: 54px 14px; }
+    }
   </style>
 </head>
 
 <body>
-
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
@@ -420,14 +501,22 @@
         </div>
       </a>
 
-      <nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="nav">
         <a href="#what">What we do</a>
         <a href="#sponsors">Sponsors</a>
         <a href="#getinvolved">Get Involved</a>
         <a href="#contact">Contact</a>
+
+        <div class="nav-cta">
+          <a class="btn ghost" href="sponsor.html">Sponsor us</a>
+          <a class="btn primary" href="https://groupme.com/join_group/109966324/IqMqhQlz" target="_blank" rel="noreferrer">Join the team</a>
+        </div>
       </nav>
 
-      <div class="header-cta">
+      <!-- Desktop CTA (hidden automatically by wrapping; keep for desktop layout balance) -->
+      <div class="nav-cta" style="display:flex;">
         <a class="btn ghost" href="sponsor.html">Sponsor us</a>
         <a class="btn primary" href="https://groupme.com/join_group/109966324/IqMqhQlz" target="_blank" rel="noreferrer">Join the team</a>
       </div>
@@ -617,6 +706,7 @@
 
         <aside class="contact-box">
           <h3>Our location</h3>
+
           <div class="contact-item">
             <b>Location</b>
             <span>Longley Building, Room 156</span>
@@ -654,7 +744,37 @@
   </footer>
 
   <script>
+    // year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    function closeMenu(){
+      nav.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // Close on link click
+    nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+    // Close if user taps outside the menu
+    document.addEventListener("click", (e) => {
+      if (!nav.classList.contains("open")) return;
+      const clickedInside = nav.contains(e.target) || menuBtn.contains(e.target);
+      if (!clickedInside) closeMenu();
+    });
+
+    // If screen resizes up, ensure menu isn't stuck open
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 720) closeMenu();
+    });
   </script>
 </body>
 </html>

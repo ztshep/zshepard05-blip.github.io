@@ -186,7 +186,7 @@
       justify-content:center;
       overflow:hidden;
       border-bottom: 1px solid var(--border);
-      background: url("assets/hero.jpg.jpg") center 20% / cover no-repeat;
+      background: url("assets/trialpic.png") center 20% / cover no-repeat;
     }
 
     /* lighter overlay so it’s NOT dim */
@@ -521,8 +521,8 @@
       .drawer.open{ display:block; }
 
       .hero{
-        min-height: 58vh;              /* less screen taken by hero */
-        background-position: center 25%; /* keep faces visible */
+        min-height: 58vh;
+        background-position: center 25%;
       }
       .hero h1{ font-size: 34px; }
       section{ padding: 54px 14px; }
@@ -532,7 +532,7 @@
     }
 
     @media (max-width: 420px){
-      .brand .title span{ display:none; } /* even smaller header */
+      .brand .title span{ display:none; }
       .btn{ padding:10px 11px; }
       .hero-card{ padding:16px; }
       .hero p{ font-size:14px; }
@@ -621,7 +621,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="assets/card2.jpg.JPG" alt="Fabrication work" />
+            <img src="assets/hero.jpg.jpg" alt="Team and submarine" />
           </div>
           <div class="card-body">
             <h3>Fabrication</h3>
@@ -678,7 +678,7 @@
         <h3 style="margin:0 0 10px; color:var(--uconn-navy);">Thank you to our supporters</h3>
 
         <div class="sponsor-layout">
-          <div class="slider" id="sponsorSlider" aria-label="Sponsor logos">
+          <div class="slider" id="sponsorSlider" aria-label="Sponsor logos" tabindex="0">
             <div class="slider-stage">
               <img id="sponsorStageImg" src="" alt="" />
             </div>
@@ -691,9 +691,7 @@
               </div>
             </div>
 
-            <div class="thumbs" id="sponsorThumbs" aria-label="Sponsor thumbnails">
-              <!-- thumbs injected by JS -->
-            </div>
+            <div class="thumbs" id="sponsorThumbs" aria-label="Sponsor thumbnails"></div>
           </div>
 
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -715,7 +713,6 @@
       </div>
 
       <div class="grid-3">
-        <!-- GroupMe (main) -->
         <div class="card">
           <div class="card-body">
             <h3>Join the team (GroupMe)</h3>
@@ -725,7 +722,6 @@
           </div>
         </div>
 
-        <!-- UConntact (secondary) -->
         <div class="card">
           <div class="card-body">
             <h3>Join officially (UConntact)</h3>
@@ -735,7 +731,6 @@
           </div>
         </div>
 
-        <!-- Follow progress -->
         <div class="card">
           <div class="card-body">
             <h3>Follow progress</h3>
@@ -819,7 +814,6 @@
       const open = drawer.classList.toggle("open");
       menuBtn.setAttribute("aria-expanded", String(open));
     });
-    // close drawer when clicking a link
     drawer?.querySelectorAll("a").forEach(a => {
       a.addEventListener("click", () => {
         drawer.classList.remove("open");
@@ -843,7 +837,6 @@
     function setActive(i){
       active = (i + sponsors.length) % sponsors.length;
 
-      // fade for smoother swap
       stageImg.style.opacity = "0";
       setTimeout(() => {
         stageImg.src = sponsors[active].src;
@@ -851,7 +844,6 @@
         caption.textContent = sponsors[active].name;
         stageImg.style.opacity = "1";
 
-        // highlight thumb
         thumbsWrap.querySelectorAll("button.thumb").forEach((btn, idx) => {
           btn.setAttribute("aria-current", idx === active ? "true" : "false");
         });
@@ -880,7 +872,6 @@
     prevBtn?.addEventListener("click", () => setActive(active - 1));
     nextBtn?.addEventListener("click", () => setActive(active + 1));
 
-    // keyboard support
     document.getElementById("sponsorSlider")?.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") setActive(active - 1);
       if (e.key === "ArrowRight") setActive(active + 1);

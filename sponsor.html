@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Become a Sponsor — UConn HPSC</title>
+  <meta name="description" content="Sponsor UConn Human Powered Submarine Club." />
+
+  <style>
+    :root{
+      --uconn-navy:#0b1f3b;
+      --uconn-blue:#1e4fa8;
+      --uconn-light:#f6f8fc;
+      --text:#111827;
+      --muted:#4b5563;
+      --border:#e5e7eb;
+      --shadow: 0 10px 30px rgba(17,24,39,.08);
+      --radius: 18px;
+      --max: 900px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: var(--uconn-light);
+      line-height:1.45;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .top{
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    .top-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .brand img{
+      width:34px; height:34px;
+      border-radius:10px;
+      object-fit:contain;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .brand b{ color:var(--uconn-navy); }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:0 6px 18px rgba(17,24,39,.06);
+    }
+    .btn.primary{
+      background: var(--uconn-blue);
+      color:#fff;
+      border-color: transparent;
+      box-shadow:0 10px 22px rgba(30,79,168,.25);
+    }
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 26px 18px 60px;
+    }
+    .panel{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    h1{
+      margin: 0 0 8px;
+      color: var(--uconn-navy);
+      letter-spacing:-.02em;
+    }
+    p{ margin:0 0 14px; color:var(--muted); }
+
+    form{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+    }
+    label{
+      display:grid;
+      gap:6px;
+      font-weight:700;
+      font-size:13px;
+      color:#1f2937;
+    }
+    input, select, textarea{
+      font: inherit;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      outline:none;
+      background:#fff;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(30,79,168,.45);
+      box-shadow: 0 0 0 4px rgba(30,79,168,.10);
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 700px){
+      .row{ grid-template-columns: 1fr; }
+    }
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+    }
+    .note{
+      font-size:12px;
+      color:var(--muted);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="index.html#sponsors">
+        <img src="assets/OfficialHPSClogo.png" alt="UConn HPSC logo" />
+        <div>
+          <b>HPSC | UConn</b><br/>
+          <span style="font-size:12px;color:var(--muted);">Sponsorship inquiry</span>
+        </div>
+      </a>
+      <a class="btn" href="index.html#sponsors">Back</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h1>Become a sponsor</h1>
+      <p>Fill this out and it will be sent through Formspree (your endpoint). We’ll respond quickly.</p>
+
+      <!-- ✅ Your Formspree form -->
+      <form action="https://formspree.io/f/maqwojdy" method="POST">
+        <div class="row">
+          <label>
+            Name*
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email*
+            <input type="email" name="email" required />
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            Company / Organization*
+            <input type="text" name="company" required />
+          </label>
+
+          <label>
+            Title / Role (optional)
+            <input type="text" name="role" placeholder="e.g., HR, Engineer, Marketing, Owner" />
+          </label>
+        </div>
+
+        <label>
+          I’m interested in*
+          <select name="interest" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Cash sponsorship</option>
+            <option>In-kind donation (materials/services)</option>
+            <option>Both</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+
+        <label>
+          Message (optional)
+          <textarea name="message" rows="6" placeholder="Anything helpful (what you’d like to support, timeline, questions, etc.)"></textarea>
+        </label>
+
+        <input type="hidden" name="_subject" value="New UConn HPSC Sponsorship Inquiry" />
+
+        <!-- honeypot -->
+        <div style="display:none;">
+          <label>Leave this blank <input name="_gotcha" /></label>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">Send inquiry</button>
+          <a class="btn" href="mailto:uhpsc@outlook.com">Email instead</a>
+        </div>
+
+        <div class="note">
+          If you want a custom “thank you” page after submit, tell me and I’ll add it (Formspree supports redirects).
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

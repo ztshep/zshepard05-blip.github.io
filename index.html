@@ -106,6 +106,7 @@
       box-shadow:0 6px 18px rgba(17,24,39,.06);
       white-space:nowrap;
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      cursor:pointer;
     }
     .btn:hover{ transform: translateY(-1px); }
     .btn.primary{
@@ -237,12 +238,6 @@
       letter-spacing:-.02em;
       color: var(--uconn-navy);
     }
-    .section-title p{
-      margin:0;
-      color: var(--muted);
-      font-size:14px;
-      max-width: 56ch;
-    }
 
     .divider{
       height:4px;
@@ -281,90 +276,6 @@
     .card-body{ padding:16px 16px 18px; }
     .card-body h3{ margin:0 0 8px; font-size:18px; color:var(--uconn-navy); }
     .card-body p{ margin:0; color:var(--muted); font-size:14px; }
-
-    /* ===== Submarine layout ===== */
-    .sub-grid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
-      margin-top: 18px;
-    }
-    @media (max-width: 900px){
-      .sub-grid{ grid-template-columns: 1fr; }
-    }
-    .panel{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 26px rgba(17,24,39,.06);
-      padding:18px;
-    }
-    .panel h3{
-      margin:0 0 8px;
-      font-size:18px;
-      color:var(--uconn-navy);
-    }
-    .panel p, .panel li{
-      color:#374151;
-      font-size:14px;
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .chip{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: var(--uconn-light);
-      color:#1f2937;
-      font-size:12px;
-      font-weight:600;
-    }
-
-    .milestones{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .milestones li{
-      margin:0;
-      padding:10px 10px;
-      border-radius: 14px;
-      background: var(--uconn-light);
-      border:1px solid #e8eefc;
-      list-style: none;
-    }
-
-    .status-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:12px;
-      margin-top: 12px;
-    }
-    @media (max-width: 520px){
-      .status-grid{ grid-template-columns: 1fr; }
-    }
-    .status{
-      border:1px solid var(--border);
-      border-radius: 16px;
-      padding:12px;
-      background:#fff;
-    }
-    .status b{
-      display:block;
-      margin-bottom:6px;
-      color:var(--uconn-navy);
-      font-size:13px;
-    }
-    .status span{
-      display:block;
-      color:var(--muted);
-      font-size:13px;
-    }
 
     /* ===== Stats strip ===== */
     .stats{
@@ -407,6 +318,13 @@
     }
 
     /* ===== Sponsors ===== */
+    .panel{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 26px rgba(17,24,39,.06);
+      padding:18px;
+    }
     .pills{
       display:flex;
       flex-wrap:wrap;
@@ -504,16 +422,14 @@
 
       <nav>
         <a href="#what">What we do</a>
-        <a href="#submarine">Our Submarine</a>
         <a href="#sponsors">Sponsors</a>
         <a href="#getinvolved">Get Involved</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="header-cta">
-        <!-- ✅ now goes to sponsor page -->
         <a class="btn ghost" href="sponsor.html">Sponsor us</a>
-        <a class="btn primary" href="https://uconntact.uconn.edu/organization/humanpoweredsubmarine" target="_blank" rel="noreferrer">Join the team</a>
+        <a class="btn primary" href="https://groupme.com/join_group/109966324/IqMqhQlz" target="_blank" rel="noreferrer">Join the team</a>
       </div>
     </div>
   </header>
@@ -529,9 +445,8 @@
           Our mission is hands-on engineering: CAD, composites, testing, and real performance iteration.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="https://uconntact.uconn.edu/organization/humanpoweredsubmarine" target="_blank" rel="noreferrer">Join the team</a>
-          <!-- ✅ now goes to sponsor page -->
-          <a class="btn ghost" href="sponsor.html">Sponsor us</a>
+          <a class="btn primary" href="https://groupme.com/join_group/109966324/IqMqhQlz" target="_blank" rel="noreferrer">Join on GroupMe</a>
+          <a class="btn ghost" href="https://uconntact.uconn.edu/organization/humanpoweredsubmarine" target="_blank" rel="noreferrer">Join on UConntact</a>
         </div>
       </div>
 
@@ -552,7 +467,6 @@
           <h2>What we do</h2>
           <div class="divider"></div>
         </div>
-        <p>Real engineering experience: design, fabrication, testing, and racing.</p>
       </div>
 
       <div class="grid-3">
@@ -611,91 +525,6 @@
     </div>
   </div>
 
-  <!-- Our Submarine -->
-  <section id="submarine" style="background: var(--uconn-light);">
-    <div class="wrap">
-      <div class="section-title">
-        <div>
-          <h2>Our Submarine</h2>
-          <div class="divider"></div>
-        </div>
-        <p>Simple, visual progress: what we’re building, where we are, and what’s next.</p>
-      </div>
-
-      <div class="sub-grid">
-        <!-- Design Overview -->
-        <div class="panel">
-          <h3>Design overview</h3>
-          <p>
-            UConn HPSC is building a single-pilot, human-powered, free-flooded racing submarine focused on
-            low drag, reliable systems, and repeatable testing. Our first build is designed as a modular platform —
-            easy to assemble, service, and iterate as we learn.
-          </p>
-
-          <div class="chips">
-            <div class="chip">Low drag</div>
-            <div class="chip">Modular systems</div>
-            <div class="chip">Repeatable testing</div>
-            <div class="chip">ISR focused</div>
-          </div>
-
-          <div style="height:14px"></div>
-
-          <h3 style="margin-top:14px;">What you’ll see here</h3>
-          <ul class="milestones" style="padding:0;">
-            <li>Short design overview (what we’re building and why)</li>
-            <li>Timeline milestones (where we are in the build cycle)</li>
-            <li>Renders / photos (CAD + prototype + fabrication progress shots)</li>
-          </ul>
-        </div>
-
-        <!-- Milestones + Status -->
-        <div class="panel">
-          <h3>Timeline milestones</h3>
-          <ul class="milestones" style="padding:0;">
-            <li><b>Concept + research:</b> hull shaping, propulsion studies, rules/safety planning</li>
-            <li><b>CAD freeze:</b> final hull/assembly layout + interfaces locked</li>
-            <li><b>Prototype phase:</b> key mechanisms tested (fit, drivetrain, seals, controls)</li>
-            <li><b>Composite layup:</b> mold/tooling → hull halves → trimming + finishing</li>
-            <li><b>Integration + pool testing:</b> ballast/trim, steering response, safety drills</li>
-            <li><b>Iteration:</b> refine based on test data and rebuild what needs improvement</li>
-          </ul>
-
-          <div style="height:14px"></div>
-
-          <h3>Current build status</h3>
-          <div class="status-grid">
-            <div class="status">
-              <b>Hull concept</b>
-              <span>Streamlined wet hull sized around pilot + SCUBA, designed for efficient flow and clean packaging.</span>
-            </div>
-            <div class="status">
-              <b>Propulsion approach</b>
-              <span>Pedal-driven drivetrain transferring power to a rear propulsor (reliability + easy servicing first).</span>
-            </div>
-            <div class="status">
-              <b>Steering</b>
-              <span>Rear control surfaces for pitch/yaw corrections, designed for predictable handling during testing.</span>
-            </div>
-            <div class="status">
-              <b>Safety features</b>
-              <span>Rapid egress plan, visible safety buoy system, and clear diver/pilot procedures as core requirements.</span>
-            </div>
-          </div>
-
-          <div style="height:14px"></div>
-
-          <h3>Milestones</h3>
-          <ul class="milestones" style="padding:0;">
-            <li><b>Completed:</b> hull concept defined, subsystem layout underway, safety plan framework</li>
-            <li><b>In progress:</b> CAD detailing + prototype parts/fit checks</li>
-            <li><b>Next:</b> composite layup planning (tooling/mold), drivetrain bench test, wet testing plan &amp; checklists</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Sponsors -->
   <section id="sponsors">
     <div class="wrap">
@@ -704,13 +533,11 @@
           <h2>Sponsors</h2>
           <div class="divider"></div>
         </div>
-        <p>Sponsorship keeps us building. Add your logo here and help us move faster.</p>
       </div>
 
       <div class="panel">
         <h3>Thank you to our supporters</h3>
 
-        <!-- ✅ Updated sponsors only -->
         <div class="pills">
           <span class="pill">Onshape</span>
           <span class="pill">Scuba Shack</span>
@@ -718,8 +545,6 @@
         </div>
 
         <div style="height:14px"></div>
-
-        <!-- ✅ Become a sponsor goes to sponsor page -->
         <a class="btn primary" href="sponsor.html">Become a sponsor</a>
       </div>
     </div>
@@ -733,30 +558,30 @@
           <h2>Get Involved</h2>
           <div class="divider"></div>
         </div>
-        <p>Join build nights, learn real skills, and help bring UConn’s first human-powered submarine to ISR.</p>
       </div>
 
       <div class="grid-3">
+        <!-- GroupMe (main) -->
         <div class="card">
           <div class="card-body">
-            <h3>Join the team</h3>
-            <p>Interested in CAD, CFD, composites, electronics, controls, or diving operations? We’ll plug you into a sub-team.</p>
+            <h3>Join the team (GroupMe)</h3>
+            <p>Fastest way to get plugged in: announcements, build nights, and quick coordination.</p>
             <div style="height:12px"></div>
-            <a class="btn primary" href="https://uconntact.uconn.edu/organization/humanpoweredsubmarine" target="_blank" rel="noreferrer">Join on UConntact</a>
+            <a class="btn primary" href="https://groupme.com/join_group/109966324/IqMqhQlz" target="_blank" rel="noreferrer">Join on GroupMe</a>
           </div>
         </div>
 
+        <!-- UConntact (secondary) -->
         <div class="card">
           <div class="card-body">
-            <h3>Sponsor us</h3>
-            <p>Support can be monetary, materials, discounts, or equipment. Sponsors appear on the hull, apparel, and website.</p>
+            <h3>Join officially (UConntact)</h3>
+            <p>Use UConntact for official roster + university visibility.</p>
             <div style="height:12px"></div>
-
-            <!-- ✅ Link to sponsor form page -->
-            <a class="btn ghost" href="sponsor.html">Contact sponsorship</a>
+            <a class="btn ghost" href="https://uconntact.uconn.edu/organization/humanpoweredsubmarine" target="_blank" rel="noreferrer">Join on UConntact</a>
           </div>
         </div>
 
+        <!-- Follow progress -->
         <div class="card">
           <div class="card-body">
             <h3>Follow progress</h3>
@@ -777,7 +602,6 @@
           <h2>Contact</h2>
           <div class="divider"></div>
         </div>
-        <p>Reach out for sponsorship, collaboration, or joining the team.</p>
       </div>
 
       <div class="contact-grid">
@@ -834,4 +658,3 @@
   </script>
 </body>
 </html>
-

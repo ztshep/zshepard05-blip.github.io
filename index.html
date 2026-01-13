@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>UConn Human Powered Submarine Club</title>
-   <meta name="description" content="UConn Human Powered Submarine Club — designing and building UConn’s first human-powered racing submarine for ISR." />
+  <meta name="description" content="UConn Human Powered Submarine Club — designing and building UConn’s first human-powered racing submarine for ISR." />
 
   <!-- Site icon -->
   <link rel="icon" href="/assets/OfficialHPSClogo.png">
@@ -23,7 +23,6 @@
   <meta name="twitter:description" content="Designing and building UConn’s first human-powered racing submarine for ISR.">
   <meta name="twitter:image" content="https://www.uconnhpsc.org/assets/social-card.png">
 
-
   <style>
     :root{
       /* UConn-ish palette */
@@ -40,7 +39,7 @@
       --radius: 18px;
       --max: 1100px;
 
-      /* HERO crop control (lets us show more “sub” area on mobile) */
+      /* HERO crop control */
       --hero-y: 20%;
     }
 
@@ -52,7 +51,7 @@
       color:var(--text);
       background:#ffffff;
       line-height:1.45;
-      overflow-x:hidden; /* prevents sideways scroll on phones */
+      overflow-x:hidden;
     }
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
@@ -209,8 +208,6 @@
       border-bottom: 1px solid var(--border);
       background: url("assets/trialpic.png") center var(--hero-y) / cover no-repeat;
     }
-
-    /* lighter overlay so it’s NOT dim */
     .hero::before{
       content:"";
       position:absolute; inset:0;
@@ -386,8 +383,6 @@
       background: #fff;
       box-shadow: 0 10px 22px rgba(15,23,42,.05);
       overflow:hidden;
-
-      /* responsive height without causing horizontal scroll */
       height: min(52vw, 420px);
       min-height: 220px;
     }
@@ -425,7 +420,6 @@
       box-shadow:0 6px 16px rgba(15,23,42,.06);
     }
 
-    /* Thumbs: never force page wider than screen */
     .thumbs{
       display:flex;
       gap:10px;
@@ -543,21 +537,18 @@
     }
 
     @media (max-width: 720px){
-      /* show more “sub” area in the hero image on phones */
       :root{ --hero-y: 62%; }
 
       .menu-btn{ display:inline-flex; }
       .nav-links{ display:none; }
-      .header-cta .btn.ghost{ display:none; } /* shrink header on phones */
+      .header-cta .btn.ghost{ display:none; }
       .drawer{ display:none; }
       .drawer.open{ display:block; }
 
       .header-inner{ padding:8px 12px; }
       .btn{ padding:10px 11px; }
 
-      .hero{
-        min-height: 58vh;
-      }
+      .hero{ min-height: 58vh; }
       .hero h1{ font-size: 34px; }
       section{ padding: 54px 14px; }
       .section-title h2{ font-size: 30px; }
@@ -712,7 +703,6 @@
 
         <div class="sponsor-layout">
           <div class="slider" id="sponsorSlider" aria-label="Sponsor logos" tabindex="0">
-            <!-- IMPORTANT: default src here so logos show even if JS fails -->
             <div class="slider-stage">
               <img id="sponsorStageImg" src="assets/Onshape_logo.png" alt="Onshape logo" />
             </div>
@@ -727,12 +717,12 @@
 
             <div class="thumbs" id="sponsorThumbs" aria-label="Sponsor thumbnails"></div>
 
-            <!-- Fallback if someone has JS disabled -->
             <noscript>
               <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
                 <img src="assets/Onshape_logo.png" alt="Onshape logo" style="width:160px;height:56px;object-fit:contain;border:1px solid #e5e7eb;border-radius:14px;padding:10px;background:#fff;" />
                 <img src="assets/ScubaShack.png" alt="Scuba Shack logo" style="width:160px;height:56px;object-fit:contain;border:1px solid #e5e7eb;border-radius:14px;padding:10px;background:#fff;" />
                 <img src="assets/Oceanstatelogo.png" alt="Ocean State Composites logo" style="width:160px;height:56px;object-fit:contain;border:1px solid #e5e7eb;border-radius:14px;padding:10px;background:#fff;" />
+                <img src="assets/VHB%20company%20logo.webp" alt="VHB logo" style="width:160px;height:56px;object-fit:contain;border:1px solid #e5e7eb;border-radius:14px;padding:10px;background:#fff;" />
               </div>
             </noscript>
           </div>
@@ -865,10 +855,12 @@
     });
 
     // sponsors slider
+    // NOTE: if you rename the file to "VHB_logo.webp", update src to: "assets/VHB_logo.webp"
     const sponsors = [
       { name: "Onshape", src: "assets/Onshape_logo.png", alt: "Onshape logo" },
       { name: "Scuba Shack", src: "assets/ScubaShack.png", alt: "Scuba Shack logo" },
       { name: "Ocean State Composites", src: "assets/Oceanstatelogo.png", alt: "Ocean State Composites logo" },
+      { name: "VHB", src: "assets/VHB%20company%20logo.webp", alt: "VHB logo" },
     ];
 
     let active = 0;
